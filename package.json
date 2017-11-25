@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://sheraz-sarwar.github.io/fixture-ticker",
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "react": "^16.1.1",
     "react-bootstrap": "^0.31.5",
     "react-dom": "^16.1.1",
@@ -13,6 +14,8 @@
     "redux": "^3.7.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
