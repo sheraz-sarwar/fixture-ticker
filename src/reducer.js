@@ -1,5 +1,5 @@
 const defaultState = {
-  range: 5,
+  range: 3,
   sort: 'overall'
 };
 

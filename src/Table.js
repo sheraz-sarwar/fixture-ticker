@@ -83,6 +83,7 @@ const getCell = (row) => {
 const Table = ({ data, gameweeks, range, sort }) => {
   const now = new Date();
   now.setDate(now.getDate() - 7);
+
   const columns = Object.entries(gameweeks).filter(([gameweek, date]) => (date > now)).slice(0, range).map(value => ({
     Header: value[0],
     accessor: value[0].toLowerCase(),
@@ -90,32 +91,18 @@ const Table = ({ data, gameweeks, range, sort }) => {
     sortMethod: (a, b) => {
       let first;
       let second;
+
       if (sort === 'overall') {
-        if (a.length === 2) {
-          first = (parseInt(a[0].overall, 10) + parseInt(a[1].overall, 10)) / 2;
-          second = (parseInt(b[0].overall, 10) + parseInt(b[1].overall, 10)) / 2;
-        } else {
-          first = parseInt(a[0].overall, 10);
-          second = parseInt(b[0].overall, 10);
-        }
+        first = (a.length === 2) ? (parseInt(a[0].overall, 10) + parseInt(a[1].overall, 10)) : parseInt(a[0].overall, 10);
+        second = (b.length === 2) ? (parseInt(b[0].overall, 10) + parseInt(b[1].overall, 10)) : parseInt(b[0].overall, 10);
       }
       if (sort === 'attack') {
-        if (a.length === 2) {
-          first = (parseInt(a[0].attack, 10) + parseInt(a[1].attack, 10)) / 2;
-          second = (parseInt(b[0].attack, 10) + parseInt(b[1].attack, 10)) / 2;
-        } else {
-          first = parseInt(a[0].attack, 10);
-          second = parseInt(b[0].attack, 10);
-        }
+        first = (a.length === 2) ? (parseInt(a[0].attack, 10) + parseInt(a[1].attack, 10)) : parseInt(a[0].attack, 10);
+        second = (b.length === 2) ? (parseInt(b[0].attack, 10) + parseInt(b[1].attack, 10)) : parseInt(b[0].attack, 10);
       }
       if (sort === 'defence') {
-        if (a.length === 2) {
-          first = (parseInt(a[0].defence, 10) + parseInt(a[1].defence, 10)) / 2;
-          second = (parseInt(b[0].defence, 10) + parseInt(b[1].defence, 10)) / 2;
-        } else {
-          first = parseInt(a[0].defence, 10);
-          second = parseInt(b[0].defence, 10);
-        }
+        first = (a.length === 2) ? (parseInt(a[0].defence, 10) + parseInt(a[1].defence, 10)) : parseInt(a[0].defence, 10);
+        second = (b.length === 2) ? (parseInt(b[0].defence, 10) + parseInt(b[1].defence, 10)) : parseInt(b[0].defence, 10);
       }
 
       return first > second ? 1 : -1;
