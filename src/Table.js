@@ -37,6 +37,10 @@ const CellText = ({ row }) => (
 );
 
 const getCell = (row) => {
+  if (!row) {
+      return (<div style={{width: '100%', height: '100%', backgroundColor: '#aaa', padding: '4px', display: 'inline-block'}} />);
+  }
+
   if (row.length === 2) {
     return (
       <div>
